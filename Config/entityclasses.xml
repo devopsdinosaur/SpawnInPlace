@@ -1,0 +1,10 @@
+﻿<configs>
+  <!-- Add respawn protection buff to list of those applied automatically on respawn -->
+  <append xpath="/entity_classes/entity_class[@name='playerMale']//triggered_effect[@trigger='onSelfRespawn']/@buff">,buffRespawnProtection</append>
+  
+  <!-- Uncomment these two lines to remove death XP penalty -->
+  <!--
+  <set xpath="/entity_classes/entity_class[@name='playerMale']//passive_effect[@name='ExpDeficitPerDeathPercentage']/@value">0</set>
+  <set xpath="/entity_classes/entity_class[@name='playerMale']//passive_effect[@name='ExpDeficitMaxPercentage']/@value">0</set>
+  -->
+</configs>

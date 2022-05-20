@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+  <ModInfo>
+    <Name value="SpawnInPlace"/>
+    <Description value="Enables respawn at current location after death and prevents quest failure for dying"/>
+    <Author value="devopsdinosaur"/>
+    <Version value="0.0.1"/>
+    <Website value=""/>
+  </ModInfo>
+</xml>

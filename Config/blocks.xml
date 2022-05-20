@@ -1,0 +1,4 @@
+<configs>
+  <!-- This removes the sleeping bag's spawn point flag.  The item still exists, just does nothing. -->
+  <remove xpath="/blocks/block/property[@value='SleepingBag']"/>
+</configs>

@@ -1,0 +1,3 @@
+﻿Key,English
+buffRespawnProtectionName, "Respawn Protection"
+buffRespawnProtectionDesc, "You are temporarily immune from damage"

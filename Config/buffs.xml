@@ -1,0 +1,40 @@
+﻿
+<configs>
+  <append xpath="/buffs">
+    <!-- Adds a short invincibility buff after respawn -->
+    <buff name="buffRespawnProtection" name_key="buffRespawnProtectionName" description_key="buffRespawnProtectionDesc" icon="ui_game_symbol_near_death_trauma" icon_color="128,128,255" remove_on_death="true">
+      <stack_type value="replace"/>
+      <duration value="0"/>
+      <effect_group>
+        <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$buffRespawnProtectionDuration" operation="set" value="10"/>
+        <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffRespawnProtectionDisplay" operation="set" value="@$buffRespawnProtectionDuration"/>
+      </effect_group>
+      <effect_group>
+        <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$buffRespawnProtectionDuration" operation="subtract" value="1"/>
+        <triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffRespawnProtectionDisplay" operation="set" value="@$buffRespawnProtectionDuration"/>
+        <triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffRespawnProtection">
+          <requirement name="CVarCompare" cvar="$buffRespawnProtectionDuration" operation="LTE" value="0"/>
+        </triggered_effect>
+      </effect_group>
+      <effect_group>
+        <triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".buffRespawnProtectionDisplay" operation="set" value="0"/>
+        <triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="$buffRespawnProtectionDuration" operation="set" value="0"/>
+      </effect_group>
+      <display_value value=".buffRespawnProtectionDisplay"/>
+      <display_value_format value="time"/>
+      <effect_group>
+        <!-- This is all borrowed from godmode buff -->
+        <passive_effect name="HealthLoss" operation="base_set" value="0"/>
+        <passive_effect name="HealthLoss" operation="perc_set" value="0"/>
+        <passive_effect name="HealthLoss" operation="perc_add" value="-1.2"/>
+        <triggered_effect trigger="onSelfBuffUpdate" action="RemoveAllNegativeBuffs"/>
+        <triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Health" operation="set" value="25000"/>
+        <triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Stamina" operation="set" value="25000"/>
+        <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$armHurtCounter" operation="set" value="0"/>
+        <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$legHurtCounter" operation="set" value="0"/>
+        <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$abrasionHealthMaxBlockage" operation="set" value="0"/>
+        <triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$abrasionCounter" operation="set" value="0"/>
+      </effect_group>
+    </buff>
+  </append>
+</configs>
