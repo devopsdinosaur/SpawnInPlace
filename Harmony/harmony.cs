@@ -24,7 +24,7 @@ namespace Harmony {
     [HarmonyPatch(typeof(PlayerMoveController))]
     [HarmonyPatch("findSpawnPosition")]
     public class SpawnInPlace_PlayerMoveController_findSpawnPosition_Prefix : PlayerMoveController {
-        private static bool Prefix(PlayerMoveController __instance, ref SpawnPosition __result, EntityPlayer ___entityPlayerLocal, bool _bSpawnAtBedRoll) {
+        private static bool Prefix(PlayerMoveController __instance, ref SpawnPosition __result, EntityPlayer ___entityPlayerLocal) {
             // Spawn at current position on death
             if (GameManager.Instance.IsEditMode() && __instance.respawnReason != RespawnType.Died) {
                 return true;
